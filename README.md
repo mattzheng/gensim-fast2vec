@@ -43,6 +43,7 @@
     # 求相似词 - 不带oov
     fv.model.most_similar(positive=[ '香味'], negative=['香'], topn=10)  # 带否定词,不带OOV
     fv.model.most_similar(positive='香味', topn=10)  # 词条求相似,不带OOV
+    fv.most_similar(['苹果'], topn=10,min_n = 1, max_n = 3)# 词条求相似,带OOV,支持list
     
     # 求相似词 - 带oov
     fv.most_similar('苹果', topn=10,min_n = 1, max_n = 3)# 词条求相似,带OOV
@@ -56,6 +57,11 @@
     
     # 得到词向量
     fv.wordVec('香味')
+    
+    # 词群之间求相似
+    w1 = ['香味','苹果']
+    w2 = ['香味很好闻','苹果']
+    fv.n_similarity(w1,w2)    # 两个词列表的相似性
     
     # 其他word2vec用法
     fv.model
